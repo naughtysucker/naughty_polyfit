@@ -11,9 +11,9 @@
 
 int main()
 {
-	std::vector<std::pair<double, double>> test_points{{0, 0}, {1, 4}, {2, 16}, {3, 256}, {5, 2215}, {6, 3323}};
+	std::vector<std::pair<double, double>> test_points{{0, 0}, {1, 4}, {2, 16}, {3, 384},  {5, 2215}, {6, 3323}};
 
-	std::shared_ptr<model_polyfit> model_ptr = std::make_shared<model_polyfit>(4);
+	std::shared_ptr<naughty::model_polyfit> model_ptr = std::make_shared<naughty::model_polyfit>(4);
 
 	model_ptr->set_points(test_points);
 
@@ -28,7 +28,7 @@ int main()
 	double var1 = results.begin()->second[1];
 	double var2 = results.begin()->second[2];
 
-	double var3 = -((model_polyfit *)model_ptr.get())->polyfit_calculate_offset(results.begin()->second);
+	double var3 = -((naughty::model_polyfit *)model_ptr.get())->polyfit_calculate_offset(results.begin()->second);
 
 	printf("LOSS: %f | %f, %f, %f, %f\n", loss, var0, var1, var2, var3);
 

@@ -16,7 +16,10 @@
 #include "Eigen/Core"
 #include "Eigen/Dense"
 
-class model_polyfit : public naughty::model_base
+namespace naughty
+{
+
+class model_polyfit : public model_base
 {
 
 	private:
@@ -45,5 +48,7 @@ class model_polyfit : public naughty::model_base
 		std::vector<std::pair<double, double>> get_average_limits(std::vector<std::vector<double>> vars);
 		std::vector<double> get_result(std::vector<std::pair<double, double>> xys);
 };
+
+}
 
 #endif

@@ -9,6 +9,9 @@
 
 #include "model_polyfit.hpp"
 
+namespace naughty
+{
+
 model_polyfit::model_polyfit(size_t dimension)
 {
 	m_dimension = dimension;
@@ -18,13 +21,39 @@ int32_t model_polyfit::set_points(const std::vector<std::pair<double, double>>& 
 {
 	m_points = points;
 
+	sort(m_points.begin(), m_points.end());
+
+	// Remove repeated x coords
+	for (std::vector<std::pair<double, double>>::iterator left_iter = m_points.begin(); left_iter < m_points.end(); left_iter++)
+	{
+		std::vector<std::pair<double, double>>::iterator right_iter = left_iter + 1;
+		for ( ; right_iter < m_points.end(); right_iter++)
+		{
+			if (right_iter->first != left_iter->first)
+			{
+				break;
+			}
+		}
+		if (right_iter != left_iter + 1)
+		{
+			size_t same_count = right_iter - left_iter;
+			double y_sum = 0;
+			for (std::vector<std::pair<double, double>>::iterator iter = left_iter; iter < right_iter; iter++)
+			{
+				y_sum += iter->second;
+			}
+			left_iter->second = y_sum / same_count;
+
+			m_points.erase(left_iter + 1, right_iter);
+		}
+	}
+
 	return 0;
 }
 
 double model_polyfit::polyfit_func(std::vector<double> vars, double x)
 {
 	assert(vars.size() == m_dimension);
-	// return vars[0] * x * x * x + vars[1] * x * x + vars[2] * x;
 	double loss = 0;
 
 	for (size_t i = 0; i < vars.size(); i++)
@@ -144,7 +173,6 @@ std::vector<std::pair<double, double>> model_polyfit::get_init_limits()
 	}
 	else
 	{
-		// limits = {{-0.01, 0.01}, {-0.1, 0.1}, {-1, 1}};
 		std::vector<std::vector<double>> results;
 		std::vector<std::pair<double, double>> selected_points = m_points;
 		sort(selected_points.begin(), selected_points.end());
@@ -206,19 +234,17 @@ double model_polyfit::loss(const std::vector<double>& vars)
 
 std::vector<double> model_polyfit::get_init_steps()
 {
-	// return {0.0001, 0.0002, 0.0004};
 	return std::vector<double>(0.1, m_dimension);
 }
 
 std::vector<double> model_polyfit::get_step_increase_rate()
 {
-	// return {2, 2, 2};
 	return std::vector<double>(2, m_dimension);
 }
 
 std::vector<double> model_polyfit::get_step_decrease_rate()
 {
-	// return {0.5, 0.5, 0.5};
 	return std::vector<double>(0.5, m_dimension);
 }
 
+}
