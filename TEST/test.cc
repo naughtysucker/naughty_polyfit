@@ -11,7 +11,7 @@
 
 int main()
 {
-	std::vector<std::pair<double, double>> test_points{{0, 0}, {1, 4}, {2, 16}, {3, 384},  {5, 2215}, {6, 3323}};
+	std::vector<std::pair<double, double>> test_points{{0, 0}, {1, 100}, {2, 202}, {3, 303}, {4, 488}, {5, 505}, {6, 600}};
 
 	std::shared_ptr<naughty::model_polyfit> model_ptr = std::make_shared<naughty::model_polyfit>(4);
 
@@ -27,10 +27,14 @@ int main()
 	double var0 = results.begin()->second[0];
 	double var1 = results.begin()->second[1];
 	double var2 = results.begin()->second[2];
+	double var3 = results.begin()->second[3];
 
-	double var3 = -((naughty::model_polyfit *)model_ptr.get())->polyfit_calculate_offset(results.begin()->second);
+	double var4 = -((naughty::model_polyfit *)model_ptr.get())->polyfit_calculate_offset(results.begin()->second);
 
-	printf("LOSS: %f | %f, %f, %f, %f\n", loss, var0, var1, var2, var3);
+	printf("LOSS: %f | Variables: %f, %f, %f, %f, %f\n", loss, var0, var1, var2, var3, var4);
+
+	printf("\nPolyfit Result:\n");
+	printf("y = %fx^4 + %fx^3 + %fx^2 + %fx + %f\n", var0, var1, var2, var3, var4);
 
 	return 0;
 }
