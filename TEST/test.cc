@@ -7,31 +7,24 @@
  * @ All Rights Reserved
  * *****************************************************************************/
 
-#include "model_polyfit.hpp"
+#include "polyfit.h"
 
 int main()
 {
-	std::vector<std::pair<double, double>> test_points{{0, 0}, {1, 100}, {2, 202}, {3, 303}, {4, 488}, {5, 505}, {6, 600}};
+	// std::vector<std::pair<double, double>> test_points{{0, 0}, {1, 100}, {2, 202}, {3, 303}, {4, 488}, {5, 505}, {6, 600}};
+	std::vector<std::pair<double, double>> test_points{{0, 11234}, {1, 11694.09}, {20, 539702}, {303, 26523517954.43}, {4.4, 14614.196864}, {-5, 10725.75}, {-600, 406505950634}};
 
-	std::shared_ptr<naughty::model_polyfit> model_ptr = std::make_shared<naughty::model_polyfit>(4);
+	std::vector<double> result;
+	
+	naughty::polyfit(test_points, 4, 100, 100, result);
 
-	model_ptr->set_points(test_points);
+	double var0 = result[0];
+	double var1 = result[1];
+	double var2 = result[2];
+	double var3 = result[3];
+	double var4 = result[4];
 
-	naughty::naughty_random_descent gd_obj(model_ptr);
-
-	gd_obj.run(100, 100);
-
-	std::list<std::pair<double, std::vector<double>>> results = gd_obj.get_results();
-
-	double loss = results.begin()->first;
-	double var0 = results.begin()->second[0];
-	double var1 = results.begin()->second[1];
-	double var2 = results.begin()->second[2];
-	double var3 = results.begin()->second[3];
-
-	double var4 = -((naughty::model_polyfit *)model_ptr.get())->polyfit_calculate_offset(results.begin()->second);
-
-	printf("LOSS: %f | Variables: %f, %f, %f, %f, %f\n", loss, var0, var1, var2, var3, var4);
+	printf(" Variables: %f, %f, %f, %f, %f\n", var0, var1, var2, var3, var4);
 
 	printf("\nPolyfit Result:\n");
 	printf("y = %fx^4 + %fx^3 + %fx^2 + %fx + %f\n", var0, var1, var2, var3, var4);

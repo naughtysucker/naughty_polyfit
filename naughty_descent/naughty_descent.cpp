@@ -115,28 +115,11 @@ int32_t naughty_descent::iteration(size_t dimension_cursor)
 	{
 		// Back
 		m_variables[dimension_cursor] = m_previous_variables[dimension_cursor];
-#if 0
-		if (m_status[dimension_cursor] == STATUS_BACK)
-		{
-			// Find a valley
-			m_steps[dimension_cursor] = -m_step_decrease_rate[dimension_cursor] * m_steps[dimension_cursor];
-			m_status[dimension_cursor] = STATUS_NOT_BACK;
-		}
-		else if (m_status[dimension_cursor] == STATUS_NOT_BACK)
-		{
-			m_steps[dimension_cursor] = -m_steps[dimension_cursor];
-			m_status[dimension_cursor] = STATUS_BACK;
-		}
-#else
 		m_steps[dimension_cursor] = -m_step_decrease_rate[dimension_cursor] * m_steps[dimension_cursor];
-#endif
 	}
 	else
 	{
 		// Next
-#if 0
-		m_status[dimension_cursor] = STATUS_NOT_BACK;
-#endif
 
 		double current_derivate = derivate(delta_loss, m_steps[dimension_cursor]);
 
@@ -146,9 +129,6 @@ int32_t naughty_descent::iteration(size_t dimension_cursor)
 
 		m_current_loss = next_step_loss;
 	}
-#ifdef _DEBUG
-	printf("loss: %f | variables: %f, %f, %f\n", m_current_loss, m_variables[0], m_variables[1], m_variables[2]);
-#endif
 	return 0;
 }
 

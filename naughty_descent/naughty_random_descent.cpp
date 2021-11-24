@@ -46,14 +46,6 @@ int32_t naughty_random_descent::run(size_t throw_times, size_t dig_times)
 
 	m_results = results;
 
-#ifdef _DEBUG
-	double loss = results.begin()->first;
-	double var0 = results.begin()->second[0];
-	double var1 = results.begin()->second[1];
-	double var2 = results.begin()->second[2];
-	printf("LOSS: %f | %f, %f, %f\n", loss, var0, var1, var2);
-#endif
-
 	return 0;
 }
 

@@ -7,6 +7,4 @@
 # * *****************************************************************************
 
 test_model:
-	g++ ../naughty_descent/naughty_descent.cpp ../naughty_descent/naughty_random_descent.cpp ../naughty_descent/model_base.cpp ../model_polyfit.cpp ./test.cc -I../naughty_descent -I.. -std=c++11
-test_model_dbg:
-	g++ ../naughty_descent/naughty_descent.cpp ../naughty_descent/naughty_random_descent.cpp ../naughty_descent/model_base.cpp ../model_polyfit.cpp ./test.cc -I../naughty_descent -I.. -std=c++11 -D_DEBUG
+	g++ ./test.cc -L.. -l:libnaughty_polyfit.a -I../naughty_descent -I.. -std=c++11
