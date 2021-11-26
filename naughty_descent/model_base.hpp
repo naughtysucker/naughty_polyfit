@@ -3,7 +3,7 @@
  * @ File Name: model_base.hpp
  * @ Author: carl
  * @ Created Time: 2021-10月-27(星期三) 00:13:16
- * @ All Rights Reserved
+ * @ SPDX-License-Identifier: Apache-2.0
  * *****************************************************************************/
 
 #ifndef MODEL_BASE_HPP

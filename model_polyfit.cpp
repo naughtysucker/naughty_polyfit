@@ -4,7 +4,7 @@
  * @ Author: gengjinhong
  * @ Email: 2560295278@qq.com
  * @ Created Time: 2021-Nov-02(Tuesday) 14:42:55
- * @ All Rights Reserved
+ * @ SPDX-License-Identifier: Apache-2.0
  * *****************************************************************************/
 
 #include "model_polyfit.hpp"

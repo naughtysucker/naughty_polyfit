@@ -4,7 +4,7 @@
 # * @ Author: carl
 # * @ Email: naughtygeng@qq.com
 # * @ Created Time: 2021-Nov-24(Wednesday) 05:11:28
-# * @ All Rights Reserved
+# * @ SPDX-License-Identifier: Apache-2.0
 # * *****************************************************************************
 
 CC=gcc
@@ -26,6 +26,7 @@ c_header_path = -I.
 c_header_path += -I./naughty_descent
 cxx_header_path = -I.
 cxx_header_path += -I./naughty_descent
+cxx_header_path += -I./eigen_source
 
 objs = $(c_source)
 objs += $(cxx_source)
@@ -37,7 +38,7 @@ objs := $(patsubst %.cc,%.o,$(objs))
 objs := $(patsubst %.cpp,%.o,$(objs))
 
 c_flags = -c -fPIC
-cxx_flags = -c -fPIC
+cxx_flags = -c -fPIC -std=c++11 -DEIGEN_MPL2_ONLY
 
 libnaughty_polyfit.a: $(objs)
 	$(if $(objs),$(AR) -r $@ $(objs),)

@@ -3,7 +3,7 @@
  * @ File Name: naughty_random_descent.cpp
  * @ Author: carl
  * @ Created Time: 2021-10月-26(星期二) 22:13:40
- * @ All Rights Reserved
+ * @ SPDX-License-Identifier: Apache-2.0
  * *****************************************************************************/
 
 #include "naughty_random_descent.hpp"

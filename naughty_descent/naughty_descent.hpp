@@ -3,7 +3,7 @@
  * @ File Name: naughty_descent.hpp
  * @ Author: cal
  * @ Created Time: 2021-Oct-22(Friday) 08:47:28
- * @ All Rights Reserved
+ * @ SPDX-License-Identifier: Apache-2.0
  * *****************************************************************************/
 
 #ifndef NAUGHTY_DESCENT_HPP

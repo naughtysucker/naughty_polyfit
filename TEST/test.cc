@@ -4,7 +4,7 @@
  * @ Author: carl
  * @ Email: naughtygeng@qq.com
  * @ Created Time: 2021-Nov-23(Tuesday) 05:32:13
- * @ All Rights Reserved
+ * @ SPDX-License-Identifier: Apache-2.0
  * *****************************************************************************/
 
 #include "polyfit.h"

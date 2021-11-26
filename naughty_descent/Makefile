@@ -4,13 +4,8 @@
 # * @ Author: carl
 # * @ Email: naughtygeng@qq.com
 # * @ Created Time: 2021-Nov-24(Wednesday) 06:21:25
-# * @ All Rights Reserved
+# * @ SPDX-License-Identifier: Apache-2.0
 # * *****************************************************************************
-
-CC=gcc
-CXX=g++
-AR=ar
-RM=rm
 
 c_source = $(wildcard *.c)
 c_header = $(wildcard *.h)

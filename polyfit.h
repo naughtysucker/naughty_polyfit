@@ -4,7 +4,7 @@
  * @ Author: carl
  * @ Email: naughtygeng@qq.com
  * @ Created Time: 2021-Nov-24(Wednesday) 05:06:46
- * @ All Rights Reserved
+ * @ SPDX-License-Identifier: Apache-2.0
  * *****************************************************************************/
 
 #ifndef POLYFIT_H

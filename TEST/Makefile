@@ -3,7 +3,7 @@
 # * @ File Name: Makefile
 # * @ Author: carl
 # * @ Created Time: 2021-10月-27(星期三) 00:54:01
-# * @ All Rights Reserved
+# * @ SPDX-License-Identifier: Apache-2.0
 # * *****************************************************************************
 
 test_model:
