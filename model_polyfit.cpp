@@ -225,7 +225,7 @@ double model_polyfit::loss(const std::vector<double>& vars)
 
 	for (double loss_per_point : losses)
 	{
-		double point_square_loss = pow(abs(loss_per_point - loss_avg) + 1, 2) - 1;
+		double point_square_loss = pow(std::abs(loss_per_point - loss_avg) + 1, 2) - 1;
 		loss += point_square_loss;
 	}
 
@@ -234,17 +234,17 @@ double model_polyfit::loss(const std::vector<double>& vars)
 
 std::vector<double> model_polyfit::get_init_steps()
 {
-	return std::vector<double>(0.1, m_dimension);
+	return std::vector<double>(m_dimension, 0.1);
 }
 
 std::vector<double> model_polyfit::get_step_increase_rate()
 {
-	return std::vector<double>(2, m_dimension);
+	return std::vector<double>(m_dimension, 2);
 }
 
 std::vector<double> model_polyfit::get_step_decrease_rate()
 {
-	return std::vector<double>(0.5, m_dimension);
+	return std::vector<double>(m_dimension, 0.5);
 }
 
 }

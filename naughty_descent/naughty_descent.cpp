@@ -20,6 +20,7 @@ naughty_descent::naughty_descent(std::shared_ptr<model_base> model_ptr, const st
 	  , m_variable_limits(m_dimension)
 	  , m_step_limits(m_dimension, 0)
 	  , m_steps(step_initial)
+	  , m_step_status(m_dimension, STEP_NORMAL)
 	  , m_current_loss(inf_pos_double())
 	  , m_status(m_dimension, STATUS_NOT_STARTED)
 	  , m_variable_status(m_dimension, VAR_NORMAL)
@@ -95,7 +96,7 @@ std::vector<enum naughty_descent::step_status_t> naughty_descent::get_step_statu
 
 int32_t naughty_descent::iteration(size_t dimension_cursor)
 {
-	if (abs(m_steps[dimension_cursor]) < m_step_limits[dimension_cursor])
+	if (std::abs(m_steps[dimension_cursor]) < m_step_limits[dimension_cursor])
 	{
 		m_step_status[dimension_cursor] = STEP_TOUCH_LIMIT;
 		return -2;
